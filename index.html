@@ -7,10 +7,10 @@
 
     <meta
       name="description"
-      content="Frontend engineer portfolio showcasing experience, projects, and technical skills."
+      content="Portfolio of a software engineering student and web designer specialising in web development, Laravel, PHP, AI, machine learning, and Odoo."
     />
 
-    <title>Brittany Chiang | Frontend Engineer</title>
+    <title>Your Name | Software Engineering Portfolio</title>
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,13 +31,12 @@
     <style>
       :root {
         --background: #0f172a;
-        --background-light: #16213b;
         --heading: #e2e8f0;
         --text: #94a3b8;
         --text-light: #cbd5e1;
         --accent: #5eead4;
-        --line: #475569;
-        --white: #ffffff;
+        --card-background: rgba(30, 41, 59, 0.55);
+        --border: rgba(148, 163, 184, 0.12);
         --max-width: 1400px;
       }
 
@@ -64,9 +63,8 @@
         text-decoration: none;
       }
 
-      button,
-      a {
-        -webkit-tap-highlight-color: transparent;
+      ul {
+        list-style: none;
       }
 
       ::selection {
@@ -81,7 +79,7 @@
         pointer-events: none;
         background: radial-gradient(
           600px circle at var(--mouse-x, 50%) var(--mouse-y, 30%),
-          rgba(29, 78, 216, 0.13),
+          rgba(29, 78, 216, 0.14),
           transparent 75%
         );
       }
@@ -91,11 +89,11 @@
         min-height: 100vh;
         margin: 0 auto;
         display: grid;
-        grid-template-columns: minmax(320px, 42%) minmax(0, 58%);
+        grid-template-columns: minmax(320px, 40%) minmax(0, 60%);
         gap: 80px;
       }
 
-      /* Left column */
+      /* Left sidebar */
 
       .sidebar {
         height: 100vh;
@@ -104,13 +102,13 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 105px 0 70px;
+        padding: 95px 0 60px;
       }
 
       .intro h1 {
         color: var(--heading);
-        font-size: clamp(2.8rem, 5vw, 4rem);
-        line-height: 1;
+        font-size: clamp(2.7rem, 5vw, 4rem);
+        line-height: 1.05;
         letter-spacing: -0.055em;
         font-weight: 700;
       }
@@ -118,28 +116,27 @@
       .intro h2 {
         margin-top: 18px;
         color: var(--text-light);
-        font-size: 1.35rem;
+        font-size: 1.3rem;
         line-height: 1.4;
         font-weight: 600;
       }
 
       .intro-description {
-        max-width: 330px;
+        max-width: 390px;
         margin-top: 20px;
         color: var(--text);
         font-size: 1rem;
-        line-height: 1.65;
+        line-height: 1.7;
       }
 
       .section-navigation {
-        margin-top: 80px;
+        margin-top: 65px;
       }
 
       .section-navigation ul {
-        list-style: none;
         display: flex;
         flex-direction: column;
-        gap: 22px;
+        gap: 18px;
       }
 
       .nav-link {
@@ -148,7 +145,7 @@
         align-items: center;
         gap: 18px;
         color: #64748b;
-        font-size: 0.78rem;
+        font-size: 0.74rem;
         font-weight: 700;
         letter-spacing: 0.14em;
         text-transform: uppercase;
@@ -159,7 +156,7 @@
 
       .nav-link::before {
         content: "";
-        width: 36px;
+        width: 34px;
         height: 1px;
         background: #475569;
         transition:
@@ -175,7 +172,7 @@
 
       .nav-link:hover::before,
       .nav-link.active::before {
-        width: 72px;
+        width: 70px;
         background: var(--heading);
       }
 
@@ -190,93 +187,67 @@
         align-items: center;
         justify-content: center;
         color: var(--text);
-        font-size: 1.45rem;
+        font-size: 1.4rem;
         transition:
           color 0.25s ease,
           transform 0.25s ease;
       }
 
       .social-link:hover {
-        color: var(--heading);
+        color: var(--accent);
         transform: translateY(-3px);
       }
 
-      /* Right column */
+      /* Main content */
 
       .content {
         min-width: 0;
-        padding: 100px 0;
+        padding: 95px 0 70px;
       }
 
       .content-section {
-        padding-bottom: 110px;
-        scroll-margin-top: 50px;
+        padding-bottom: 105px;
+        scroll-margin-top: 45px;
       }
 
       .mobile-section-title {
         display: none;
-        margin-bottom: 30px;
         color: var(--heading);
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         font-weight: 700;
         letter-spacing: 0.14em;
         text-transform: uppercase;
       }
 
-      .about-copy {
-        max-width: 720px;
-      }
-
       .about-copy p {
-        margin-bottom: 24px;
+        margin-bottom: 22px;
         color: #9fb3d1;
-        font-size: 1.05rem;
-        line-height: 1.75;
+        font-size: 1.02rem;
+        line-height: 1.8;
       }
 
       .inline-link {
-        position: relative;
         color: var(--heading);
         font-weight: 600;
         transition: color 0.2s ease;
-      }
-
-      .inline-link::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: -2px;
-        left: 0;
-        height: 1px;
-        background: var(--accent);
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.25s ease;
       }
 
       .inline-link:hover {
         color: var(--accent);
       }
 
-      .inline-link:hover::after {
-        transform: scaleX(1);
-        transform-origin: left;
-      }
+      /* Cards */
 
-      /* Experience */
-
-      .experience-list,
-      .project-list {
+      .card-list {
         display: flex;
         flex-direction: column;
         gap: 18px;
       }
 
-      .experience-card,
-      .project-card {
+      .content-card {
         display: grid;
-        grid-template-columns: 155px minmax(0, 1fr);
-        gap: 25px;
+        grid-template-columns: 160px minmax(0, 1fr);
+        gap: 26px;
         padding: 22px;
         border: 1px solid transparent;
         border-radius: 12px;
@@ -286,19 +257,19 @@
           transform 0.25s ease;
       }
 
-      .experience-card:hover,
-      .project-card:hover {
-        background: rgba(30, 41, 59, 0.52);
-        border-color: rgba(148, 163, 184, 0.08);
+      .content-card:hover {
+        background: var(--card-background);
+        border-color: var(--border);
         transform: translateY(-3px);
       }
 
-      .experience-date {
+      .card-date {
         padding-top: 3px;
         color: #64748b;
         font-size: 0.72rem;
         font-weight: 600;
-        letter-spacing: 0.08em;
+        line-height: 1.6;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
       }
 
@@ -309,29 +280,57 @@
         color: var(--heading);
         font-size: 1rem;
         font-weight: 600;
-        line-height: 1.45;
+        line-height: 1.5;
       }
 
       .card-title i {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         transition: transform 0.2s ease;
       }
 
-      .experience-card:hover .card-title i,
-      .project-card:hover .card-title i {
+      .content-card:hover .card-title i {
         transform: translate(3px, -3px);
       }
 
+      .card-subtitle {
+        margin-top: 3px;
+        color: var(--text-light);
+        font-size: 0.86rem;
+        font-weight: 500;
+      }
+
       .card-description {
-        margin-top: 10px;
+        margin-top: 12px;
+        color: var(--text);
+        font-size: 0.9rem;
+        line-height: 1.75;
+      }
+
+      .card-points {
+        margin-top: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .card-points li {
+        position: relative;
+        padding-left: 18px;
         color: var(--text);
         font-size: 0.9rem;
         line-height: 1.7;
       }
 
+      .card-points li::before {
+        content: "▹";
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--accent);
+      }
+
       .technology-list {
         margin-top: 16px;
-        list-style: none;
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
@@ -342,45 +341,82 @@
         border-radius: 999px;
         background: rgba(94, 234, 212, 0.1);
         color: var(--accent);
-        font-size: 0.73rem;
+        font-size: 0.72rem;
         font-weight: 500;
       }
 
-      /* Projects */
+      /* Skills */
 
-      .project-card {
-        grid-template-columns: 155px minmax(0, 1fr);
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
       }
 
-      .project-image {
-        width: 100%;
-        aspect-ratio: 16 / 10;
-        overflow: hidden;
-        border: 1px solid rgba(148, 163, 184, 0.2);
-        border-radius: 5px;
-        background: var(--background-light);
-      }
-
-      .project-image img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        object-fit: cover;
+      .skill-card {
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(30, 41, 59, 0.28);
         transition:
-          transform 0.35s ease,
-          filter 0.35s ease;
+          transform 0.25s ease,
+          background-color 0.25s ease;
       }
 
-      .project-card:hover .project-image img {
-        transform: scale(1.04);
-        filter: brightness(1.08);
+      .skill-card:hover {
+        background: var(--card-background);
+        transform: translateY(-3px);
+      }
+
+      .skill-card h3 {
+        margin-bottom: 12px;
+        color: var(--heading);
+        font-size: 0.95rem;
+      }
+
+      .skill-card p {
+        color: var(--text);
+        font-size: 0.88rem;
+        line-height: 1.75;
+      }
+
+      /* Achievement */
+
+      .achievement-card {
+        padding: 26px;
+        border: 1px solid rgba(94, 234, 212, 0.18);
+        border-radius: 12px;
+        background: rgba(94, 234, 212, 0.05);
+      }
+
+      .achievement-label {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: var(--accent);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .achievement-card h3 {
+        color: var(--heading);
+        font-size: 1.05rem;
+        line-height: 1.5;
+      }
+
+      .achievement-card p {
+        margin-top: 10px;
+        color: var(--text);
+        font-size: 0.9rem;
+        line-height: 1.75;
       }
 
       .footer {
-        max-width: 500px;
-        padding: 20px 0 20px 202px;
+        max-width: 560px;
+        padding: 10px 22px 20px 208px;
         color: #64748b;
-        font-size: 0.78rem;
+        font-size: 0.76rem;
         line-height: 1.7;
       }
 
@@ -394,33 +430,28 @@
 
       /* Tablet */
 
-      @media (max-width: 1050px) {
+      @media (max-width: 1080px) {
         .portfolio {
-          grid-template-columns: minmax(280px, 38%) minmax(0, 62%);
+          grid-template-columns: minmax(280px, 37%) minmax(0, 63%);
           gap: 45px;
         }
 
-        .intro h1 {
-          font-size: 3rem;
-        }
-
-        .experience-card,
-        .project-card {
-          grid-template-columns: 120px minmax(0, 1fr);
+        .content-card {
+          grid-template-columns: 125px minmax(0, 1fr);
           gap: 18px;
           padding: 18px;
         }
 
         .footer {
-          padding-left: 156px;
+          padding-left: 161px;
         }
       }
 
       /* Mobile */
 
-      @media (max-width: 800px) {
+      @media (max-width: 820px) {
         .portfolio {
-          width: min(100% - 40px, 680px);
+          width: min(100% - 40px, 700px);
           display: block;
         }
 
@@ -428,15 +459,15 @@
           height: auto;
           position: static;
           display: block;
-          padding: 75px 0 70px;
+          padding: 70px 0 65px;
         }
 
         .intro h1 {
-          font-size: clamp(2.55rem, 12vw, 3.5rem);
+          font-size: clamp(2.5rem, 12vw, 3.5rem);
         }
 
         .intro-description {
-          max-width: 420px;
+          max-width: 500px;
         }
 
         .section-navigation {
@@ -444,15 +475,15 @@
         }
 
         .social-links {
-          margin-top: 36px;
+          margin-top: 35px;
         }
 
         .content {
-          padding: 0 0 80px;
+          padding: 0 0 70px;
         }
 
         .content-section {
-          padding-bottom: 90px;
+          padding-bottom: 85px;
           scroll-margin-top: 0;
         }
 
@@ -461,26 +492,20 @@
           top: 0;
           z-index: 10;
           display: block;
-          margin-right: -20px;
-          margin-left: -20px;
-          padding: 18px 20px;
+          margin: 0 -20px 28px;
+          padding: 17px 20px;
           background: rgba(15, 23, 42, 0.9);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
         }
 
-        .about-copy p {
-          font-size: 1rem;
-        }
-
-        .experience-card,
-        .project-card {
+        .content-card {
           grid-template-columns: 1fr;
-          padding: 18px 0;
+          padding: 20px 0;
         }
 
-        .project-image {
-          max-width: 260px;
+        .skills-grid {
+          grid-template-columns: 1fr;
         }
 
         .footer {
@@ -494,15 +519,15 @@
         }
 
         .sidebar {
-          padding-top: 55px;
+          padding-top: 52px;
         }
 
         .intro h2 {
-          font-size: 1.15rem;
+          font-size: 1.12rem;
         }
 
         .social-links {
-          gap: 20px;
+          gap: 19px;
         }
       }
 
@@ -529,12 +554,15 @@
       <aside class="sidebar">
         <div>
           <header class="intro">
-            <h1>Brittany Chiang</h1>
+            <!-- Replace with your name -->
+            <h1>Your Name</h1>
 
-            <h2>Frontend Engineer</h2>
+            <h2>Software Engineering Student & Web Designer</h2>
 
             <p class="intro-description">
-              I build accessible, pixel-perfect experiences for the web.
+              I build responsive web applications and explore practical
+              solutions using software engineering, artificial intelligence, and
+              data-driven technologies.
             </p>
           </header>
 
@@ -561,14 +589,37 @@
                   Projects
                 </a>
               </li>
+
+              <li>
+                <a class="nav-link" href="#education" data-section="education">
+                  Education
+                </a>
+              </li>
+
+              <li>
+                <a class="nav-link" href="#skills" data-section="skills">
+                  Skills
+                </a>
+              </li>
+
+              <li>
+                <a
+                  class="nav-link"
+                  href="#certifications"
+                  data-section="certifications"
+                >
+                  Certifications
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
 
-        <div class="social-links" aria-label="Social media links">
+        <div class="social-links" aria-label="Social media and contact links">
+          <!-- Replace these links -->
           <a
             class="social-link"
-            href="https://github.com/"
+            href="https://github.com/yourusername"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -579,7 +630,7 @@
 
           <a
             class="social-link"
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/yourusername"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -588,28 +639,13 @@
             <i class="fa-brands fa-linkedin"></i>
           </a>
 
-          <a class="social-link" href="#" aria-label="CodePen" title="CodePen">
-            <i class="fa-brands fa-codepen"></i>
-          </a>
-
           <a
             class="social-link"
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            title="Instagram"
+            href="mailto:yourname@email.com"
+            aria-label="Email"
+            title="Email"
           >
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-
-          <a
-            class="social-link"
-            href="#"
-            aria-label="Goodreads"
-            title="Goodreads"
-          >
-            <i class="fa-brands fa-goodreads"></i>
+            <i class="fa-solid fa-envelope"></i>
           </a>
         </div>
       </aside>
@@ -622,47 +658,37 @@
 
           <div class="about-copy">
             <p>
-              Hi there! I'm Brittany, and I like building things. I'm a frontend
-              engineer with expertise in crafting accessible, pixel-perfect user
-              interfaces. I take pride in creating thoughtful, inclusive
-              products and have a sharp eye for the little details that separate
-              a good product from an exceptional one.
+              I am a Bachelor of Computer Science student specialising in
+              Software Engineering at Universiti Malaysia Pahang Al-Sultan
+              Abdullah.
             </p>
 
             <p>
-              I enjoy working most at the intersection of design and
-              engineering, where great user experience meets clean, scalable
-              code.
+              My interests include web development, software engineering,
+              artificial intelligence, machine learning, data analysis, and
+              cybersecurity. I have practical experience developing web
+              applications using HTML, CSS, JavaScript, PHP, Laravel, MySQL,
+              Firebase, and Odoo.
             </p>
 
             <p>
-              Currently, I'm a Senior Frontend Engineer at
-              <a class="inline-link" href="#"> Klaviyo </a>, where I work on our
-              design system and help build new products, like
-              <a class="inline-link" href="#"> Composer </a>. I lead engineering
-              efforts across our component library and frontend platform,
-              partnering closely with designers and engineers.
+              During my internship at
+              <a
+                class="inline-link"
+                href="https://slsoftware.com.my/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SL Software Solutions Sdn. Bhd. </a
+              >, I developed more than 50 Odoo application, service, and
+              industry solution pages. I also created responsive layouts,
+              technical documentation, and Knowledge Base articles.
             </p>
 
             <p>
-              Previously, I’ve worked across a wide range of environments — from
-              product studios to startups and large technology companies —
-              including
-              <a class="inline-link" href="#">Apple</a>,
-              <a class="inline-link" href="#">Starry Internet</a>, and
-              <a class="inline-link" href="#">Upstatement</a>.
-            </p>
-
-            <p>
-              Outside of my day-to-day work, I also created an
-              <a class="inline-link" href="#"> online video course </a>
-              that walks through building a real-world, API-driven application
-              from scratch.
-            </p>
-
-            <p>
-              In my spare time, you can usually find me climbing, playing
-              tennis, spending time with my family, or exploring new places.
+              I enjoy solving technical problems, adapting to new environments,
+              and collaborating with others to develop useful and reliable
+              software solutions.
             </p>
           </div>
         </section>
@@ -671,78 +697,58 @@
         <section class="content-section" id="experience">
           <h2 class="mobile-section-title">Experience</h2>
 
-          <div class="experience-list">
-            <article class="experience-card">
-              <div class="experience-date">2024 — Present</div>
-
-              <div>
-                <a class="card-title" href="#">
-                  Senior Frontend Engineer · Klaviyo
-
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-
-                <p class="card-description">
-                  Build and maintain accessible components for a large-scale
-                  design system. Collaborate with designers, product managers,
-                  and engineers to create consistent user experiences.
-                </p>
-
-                <ul class="technology-list">
-                  <li>JavaScript</li>
-                  <li>TypeScript</li>
-                  <li>React</li>
-                  <li>Storybook</li>
-                </ul>
+          <div class="card-list">
+            <article class="content-card">
+              <div class="card-date">
+                March 2026<br />
+                — August 2026
               </div>
-            </article>
-
-            <article class="experience-card">
-              <div class="experience-date">2018 — 2024</div>
 
               <div>
-                <a class="card-title" href="#">
-                  Lead Engineer · Upstatement
+                <a
+                  class="card-title"
+                  href="https://slsoftware.com.my/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Web Designer Intern · SL Software Solutions
 
                   <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
 
-                <p class="card-description">
-                  Developed high-quality digital products for clients across
-                  technology, media, education, and healthcare. Led frontend
-                  architecture and mentored junior developers.
-                </p>
+                <p class="card-subtitle">SL Software Solutions Sdn. Bhd.</p>
+
+                <ul class="card-points">
+                  <li>
+                    Developed more than 50 Odoo application, service, and
+                    industry solution pages using Odoo Website Builder.
+                  </li>
+
+                  <li>
+                    Improved website structure, content organisation, and
+                    responsiveness to enhance user experience and customer
+                    engagement.
+                  </li>
+
+                  <li>
+                    Developed custom page layouts using HTML and CSS despite
+                    limited administrative access to the WordPress environment.
+                  </li>
+
+                  <li>
+                    Created and maintained Odoo user documentation and Knowledge
+                    Base articles by embedding tutorial videos and updating
+                    technical content.
+                  </li>
+                </ul>
 
                 <ul class="technology-list">
-                  <li>React</li>
-                  <li>Next.js</li>
+                  <li>Odoo</li>
                   <li>WordPress</li>
-                  <li>Node.js</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="experience-card">
-              <div class="experience-date">2016 — 2018</div>
-
-              <div>
-                <a class="card-title" href="#">
-                  UI Engineer · Apple
-
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-
-                <p class="card-description">
-                  Created responsive interfaces and reusable components for
-                  internal products. Improved accessibility, performance, and
-                  interface consistency.
-                </p>
-
-                <ul class="technology-list">
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JavaScript</li>
-                  <li>Accessibility</li>
+                  <li>HTML5</li>
+                  <li>CSS3</li>
+                  <li>Responsive Design</li>
+                  <li>Technical Writing</li>
                 </ul>
               </div>
             </article>
@@ -753,82 +759,364 @@
         <section class="content-section" id="projects">
           <h2 class="mobile-section-title">Projects</h2>
 
-          <div class="project-list">
-            <article class="project-card">
-              <a
-                class="project-image"
-                href="#"
-                aria-label="View portfolio project"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=900&q=80"
-                  alt="Website interface displayed on a laptop"
-                />
-              </a>
+          <div class="card-list">
+            <!-- Project 1 -->
+            <article class="content-card">
+              <div class="card-date">
+                Final Year Project<br />
+                2025
+              </div>
 
               <div>
-                <a class="card-title" href="#">
-                  Portfolio Website
+                <h3 class="card-title">Email Classification Using AI</h3>
 
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
+                <ul class="card-points">
+                  <li>
+                    Conducted research into the application of supervised
+                    learning models and Natural Language Processing for
+                    automated email classification.
+                  </li>
 
-                <p class="card-description">
-                  A responsive personal portfolio built with semantic HTML,
-                  modern CSS, and lightweight JavaScript interactions.
-                </p>
+                  <li>
+                    Processed a corpus of 500,000 email records using Python,
+                    TF-IDF feature extraction, and Google Colab.
+                  </li>
+
+                  <li>
+                    Prepared data, trained machine learning models, and
+                    performed comparative algorithm analysis.
+                  </li>
+
+                  <li>
+                    Evaluated model effectiveness using key classification
+                    metrics and interpreted the resulting data.
+                  </li>
+                </ul>
 
                 <ul class="technology-list">
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JavaScript</li>
+                  <li>Python</li>
+                  <li>Machine Learning</li>
+                  <li>NLP</li>
+                  <li>TF-IDF</li>
+                  <li>Google Colab</li>
+                  <li>Data Analysis</li>
                 </ul>
               </div>
             </article>
 
-            <article class="project-card">
-              <a
-                class="project-image"
-                href="#"
-                aria-label="View dashboard project"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80"
-                  alt="Business analytics dashboard"
-                />
-              </a>
+            <!-- Project 2 -->
+            <article class="content-card">
+              <div class="card-date">2025</div>
 
               <div>
-                <a class="card-title" href="#">
-                  Analytics Dashboard
+                <h3 class="card-title">
+                  Tuition Management System · BelajarWithME
+                </h3>
 
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
+                <ul class="card-points">
+                  <li>
+                    Designed and developed the Enrollment, Payment, and Content
+                    Access module for a web-based tuition management system.
+                  </li>
 
-                <p class="card-description">
-                  An interactive analytics dashboard with responsive data
-                  visualisations, filtering, and reusable interface components.
-                </p>
+                  <li>
+                    Built secure enrollment and payment workflows with
+                    role-based access control, payment verification, and
+                    transaction history.
+                  </li>
+
+                  <li>
+                    Implemented invoice generation and course content
+                    authorisation.
+                  </li>
+
+                  <li>
+                    Collaborated in an Agile team using Git for version control,
+                    iterative development, testing, and code integration.
+                  </li>
+
+                  <li>
+                    Achieved 100% successful completion for core user workflows
+                    during functional testing while maintaining transaction
+                    security and data accuracy.
+                  </li>
+                </ul>
 
                 <ul class="technology-list">
-                  <li>React</li>
-                  <li>TypeScript</li>
-                  <li>Chart.js</li>
+                  <li>Laravel</li>
+                  <li>PHP</li>
+                  <li>Firebase</li>
+                  <li>Git</li>
+                  <li>Agile</li>
+                  <li>Functional Testing</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="content-card">
+              <div class="card-date">2025</div>
+
+              <div>
+                <h3 class="card-title">
+                  FKPark · Car Parking Management System
+                </h3>
+
+                <ul class="card-points">
+                  <li>
+                    Maintained and enhanced the Manage Traffic Summon module
+                    through adaptive and perfective software maintenance.
+                  </li>
+
+                  <li>
+                    Developed an automated PHP email notification service to
+                    deliver real-time traffic summon updates.
+                  </li>
+
+                  <li>
+                    Designed and implemented an audit trail that recorded status
+                    changes, user actions, timestamps, and notifications.
+                  </li>
+
+                  <li>
+                    Improved system transparency, user communication, and data
+                    traceability.
+                  </li>
+
+                  <li>
+                    Used Git for collaborative version control and MySQL for
+                    reliable data management.
+                  </li>
+                </ul>
+
+                <ul class="technology-list">
+                  <li>PHP</li>
+                  <li>MySQL</li>
+                  <li>Git</li>
+                  <li>Email Automation</li>
+                  <li>Audit Trail</li>
+                  <li>VS Code</li>
                 </ul>
               </div>
             </article>
           </div>
         </section>
 
+        <!-- Education -->
+        <section class="content-section" id="education">
+          <h2 class="mobile-section-title">Education</h2>
+
+          <div class="card-list">
+            <article class="content-card">
+              <div class="card-date">
+                October 2022<br />
+                — Present
+              </div>
+
+              <div>
+                <h3 class="card-title">Bachelor of Computer Science</h3>
+
+                <p class="card-subtitle">Software Engineering with Honours</p>
+
+                <p class="card-description">
+                  Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA), Pekan,
+                  Pahang
+                </p>
+
+                <ul class="technology-list">
+                  <li>CGPA 3.21</li>
+                  <li>Software Engineering</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="content-card">
+              <div class="card-date">
+                June 2019<br />
+                — March 2022
+              </div>
+
+              <div>
+                <h3 class="card-title">Diploma in Applied Science</h3>
+
+                <p class="card-description">
+                  Universiti Teknologi MARA (UiTM), Arau, Perlis
+                </p>
+
+                <ul class="technology-list">
+                  <li>CGPA 3.28</li>
+                  <li>MUET Band 4</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="content-section" id="skills">
+          <h2 class="mobile-section-title">Skills</h2>
+
+          <div class="skills-grid">
+            <article class="skill-card">
+              <h3>Frontend Technologies</h3>
+
+              <p>
+                HTML5, CSS3, JavaScript, Bootstrap, responsive web design, and
+                custom page layouts.
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h3>Backend Technologies</h3>
+
+              <p>
+                PHP and Laravel for developing web application features,
+                workflows, and business logic.
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h3>Databases</h3>
+
+              <p>
+                MySQL and Firebase for data storage, transaction management, and
+                application integration.
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h3>Development Tools</h3>
+
+              <p>
+                Visual Studio Code, Git, GitHub, Google Colab, Odoo, and
+                WordPress.
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h3>Data & Reporting</h3>
+
+              <p>
+                Looker Studio, Power BI, data analysis, machine learning
+                evaluation, and data visualisation.
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h3>Soft Skills</h3>
+
+              <p>
+                Problem-solving, adaptability, analytical thinking,
+                self-motivation, and collaboration.
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h3>Languages</h3>
+
+              <p>
+                Malay — Native<br />
+                English — Professional proficiency
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="content-section" id="certifications">
+          <h2 class="mobile-section-title">Certifications</h2>
+
+          <div class="card-list">
+            <article class="content-card">
+              <div class="card-date">June 2026</div>
+
+              <div>
+                <h3 class="card-title">PECB Cybersecurity Foundation</h3>
+
+                <p class="card-description">
+                  Earned the professional certification after successfully
+                  passing the PECB Cybersecurity Foundation examination.
+                </p>
+
+                <ul class="technology-list">
+                  <li>Cybersecurity</li>
+                  <li>Information Security</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="content-card">
+              <div class="card-date">May 2024</div>
+
+              <div>
+                <h3 class="card-title">EF SET English Certificate</h3>
+
+                <p class="card-description">
+                  Achieved CEFR C2 Proficient in Reading and Listening,
+                  demonstrating advanced English communication ability.
+                </p>
+
+                <ul class="technology-list">
+                  <li>CEFR C2</li>
+                  <li>Reading</li>
+                  <li>Listening</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="content-card">
+              <div class="card-date">August 2023</div>
+
+              <div>
+                <h3 class="card-title">CCNA: Introduction to Networks</h3>
+
+                <p class="card-subtitle">Cisco Networking Academy</p>
+
+                <p class="card-description">
+                  Gained practical experience with IP addressing, switching,
+                  routing, network configuration, and Cisco Packet Tracer.
+                </p>
+
+                <ul class="technology-list">
+                  <li>Networking</li>
+                  <li>IP Addressing</li>
+                  <li>Routing</li>
+                  <li>Switching</li>
+                  <li>Packet Tracer</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Achievement -->
+        <section class="content-section" id="achievement">
+          <h2 class="mobile-section-title">Achievement</h2>
+
+          <article class="achievement-card">
+            <span class="achievement-label"> November 2025 </span>
+
+            <h3>
+              Silver Award · FIM International Innovation Exhibition (FIMiEx)
+            </h3>
+
+            <p>
+              SmartMail AI received a Silver Award for innovation in developing
+              an automated email classification solution using Machine Learning
+              and Natural Language Processing.
+            </p>
+          </article>
+        </section>
+
         <footer class="footer">
-          Designed and built with semantic HTML, modern CSS, and JavaScript.
-          Inspired by the portfolio layout of
+          Designed and developed using semantic HTML, modern CSS, and
+          JavaScript. Hosted using
           <a
-            href="https://brittanychiang.com/"
+            href="https://pages.github.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Brittany Chiang </a
+            GitHub Pages </a
           >.
         </footer>
       </div>
@@ -839,7 +1127,7 @@
       const sections = document.querySelectorAll(".content-section");
       const pageGlow = document.querySelector(".page-glow");
 
-      // Update active navigation item while scrolling
+      // Highlight the active navigation section while scrolling
       const sectionObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -864,7 +1152,6 @@
         sectionObserver.observe(section);
       });
 
-      // Smooth navigation with correct active state
       navigationLinks.forEach((link) => {
         link.addEventListener("click", () => {
           navigationLinks.forEach((item) => {
@@ -877,11 +1164,9 @@
 
       // Cursor-following background glow
       window.addEventListener("mousemove", (event) => {
-        const x = `${event.clientX}px`;
-        const y = `${event.clientY}px`;
+        pageGlow.style.setProperty("--mouse-x", `${event.clientX}px`);
 
-        pageGlow.style.setProperty("--mouse-x", x);
-        pageGlow.style.setProperty("--mouse-y", y);
+        pageGlow.style.setProperty("--mouse-y", `${event.clientY}px`);
       });
     </script>
   </body>
